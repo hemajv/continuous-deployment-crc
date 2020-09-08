@@ -1,0 +1,51 @@
+
+
+
+### https://github.com/mozilla/sops
+$ go get -u go.mozilla.org/sops/v3/cmd/sops
+$ cd $GOPATH/src/go.mozilla.org/sops/
+
+cd $GOPATH/src/go.mozilla.org/sops/v3/
+
+$ git checkout develop
+$ make install
+
+
+# prereq: go sops, gpg
+https://github.com/viaduct-ai/kustomize-sops
+
+
+
+#####
+
+ install sops
+ install kustomize-sops (
+ #install ksops
+
+go get -u github.com/fvbommel/sortorder
+
+
+### 
+
+$ . examples/configure_development.sh 
+serviceaccount/argocd-dex-server patched
+secret/argocd-secret patched
+configmap/argocd-cm replaced
+secret/dev-cluster-spec patched
+secret/dev-cluster-spec patched
+application.argoproj.io/dev-app replaced
+group.user.openshift.io/dev-group created
+The Group "dev-group" is invalid: user[0]: Invalid value: "kube:admin": may not contain ":"
+
+fix: oc adm groups add-users dev-group developer
+
+
+download argocd CLI:
+https://github.com/argoproj/argo-cd/releases/tag/v1.7.4
+
+
+
+
+# Auto HOWTO
+
+https://www.openshift.com/blog/openshift-authentication-integration-with-argocd
