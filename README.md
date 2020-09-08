@@ -20,3 +20,6 @@ $ base64 -d < examples/key.asc | gpg --import
 You will need to import this key to be able to decrypt the contents of the secrets using sops.
 
 Do NOT use this gpg key for prod purposes.
+
+## Detailed instalation steps
+Detailed instalation steps are described in [README-CRC.md](README-CRC.md)

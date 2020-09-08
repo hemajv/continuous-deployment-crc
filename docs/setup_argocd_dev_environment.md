@@ -2,11 +2,27 @@
 
 ## Prequisites
 * An OCP 4.x Development cluster
-* Must have cluster admin
+* Must have cluster admin (not kube:admin)
 
 ## Instructions
 
-Create the project `aicoe-argocd-dev` and `argocd-test`. The latter wll be used
+### Create an admin user
+If you have only `kube:admin` user. You should create a new admin user.
+
+You can use
+```bash
+examples/crc-create-myadmin.sh
+```
+to do that. It creates user named `myadmin` with password `foobar68` (change it).
+
+Login as your new admin user.
+
+```bash
+oc login -u myadmin -p foobar68 https://api.crc.testing:6443`
+```
+### Create projects
+
+Next create the project `aicoe-argocd-dev` and `argocd-test`. The latter wll be used
 for deploying a dev application via ArgoCD.
 
 ```bash
@@ -14,7 +30,7 @@ oc new-project argocd-test
 oc new-project aicoe-argocd-dev
 ```
 
-Deploy ArgoCD
+### Deploy ArgoCD
 ```bash
 git clone git@github.com:operate-first/continuous-deployment.git
 cd continuous-deployment
@@ -31,6 +47,9 @@ Once deployed, there are some additional configurations, run this script:
 ```bash
 examples/configure_development.sh
 ```
+
+The script needs to be run under a user with the cluster admin role, but not with `kube:admin`.
+
 Feel free to look inside the script for detailed comments on what configurations are applied.
 
 ## Cleanup
